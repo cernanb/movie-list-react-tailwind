@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Title</th>
+          <th class="px-4 py-2">Author</th>
+          <th class="px-4 py-2">Views</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">Intro to CSS</td>
+          <td class="border px-4 py-2">Adam</td>
+          <td class="border px-4 py-2">858</td>
+        </tr>
+        <tr class="bg-gray-100">
+          <td class="border px-4 py-2">
+            A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design
+          </td>
+          <td class="border px-4 py-2">Adam</td>
+          <td class="border px-4 py-2">112</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Into to JavaScript</td>
+          <td class="border px-4 py-2">Chris</td>
+          <td class="border px-4 py-2">1,280</td>
+        </tr>
+      </tbody>
+    </table>
+  )
 }
 
-export default App;
+export default App

@@ -1,35 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Pagination from './Pagination'
+import MovieList from './MovieList'
 
 function App() {
+  const [movies, setMovies] = useState([])
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&page=${page}`
+        )
+        const data = await res.json()
+        setMovies(data.results)
+        setTotalPages(data.total_pages)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    fetchData()
+  }, [page])
+
+  const pages = Array.from(Array(totalPages).keys())
   return (
-    <table class="table-auto">
-      <thead>
-        <tr>
-          <th class="px-4 py-2">Title</th>
-          <th class="px-4 py-2">Author</th>
-          <th class="px-4 py-2">Views</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="border px-4 py-2">Intro to CSS</td>
-          <td class="border px-4 py-2">Adam</td>
-          <td class="border px-4 py-2">858</td>
-        </tr>
-        <tr class="bg-gray-100">
-          <td class="border px-4 py-2">
-            A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design
-          </td>
-          <td class="border px-4 py-2">Adam</td>
-          <td class="border px-4 py-2">112</td>
-        </tr>
-        <tr>
-          <td class="border px-4 py-2">Into to JavaScript</td>
-          <td class="border px-4 py-2">Chris</td>
-          <td class="border px-4 py-2">1,280</td>
-        </tr>
-      </tbody>
-    </table>
+    <>
+      <Pagination page={page} setPage={setPage} pages={pages} />
+      <MovieList movies={movies} />
+    </>
   )
 }
 

@@ -24,10 +24,10 @@ function App() {
 
   const pages = Array.from(Array(totalPages).keys())
   return (
-    <>
+    <div class="container mx-auto px-6">
       <Pagination page={page} setPage={setPage} pages={pages} />
       <MovieList movies={movies} />
-    </>
+    </div>
   )
 }
 

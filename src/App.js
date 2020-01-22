@@ -27,6 +27,7 @@ function App() {
   const pages = Array.from(Array(totalPages).keys())
   return (
     <div class="container mx-auto px-6">
+      <div class="w-48 mx-auto pt-6  text-center text-2xl text-blue-700">UPCOMING MOVIES</div>
       <Pagination page={page} setPage={setPage} pages={pages} />
       <MovieList movies={movies} />
     </div>

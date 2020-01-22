@@ -10,15 +10,14 @@ const Pagination = ({ pages, setPage, page }) => {
       </li>
       {pages.map(pageNum => (
         <li>
-          <a
+          <span
             className={`block ${
               page === pageNum + 1 ? 'bg-blue-500 text-white' : ''
-            } hover:text-white hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2`}
-            href={`#${pageNum + 1}`}
+            } hover:text-white hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer`}
             onClick={() => setPage(pageNum + 1)}
           >
             {pageNum + 1}
-          </a>
+          </span>
         </li>
       ))}
 

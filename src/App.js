@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { movieDataSanitizer } from './utils'
 import Pagination from './Pagination'
 import MovieList from './MovieList'
 
@@ -13,7 +14,8 @@ function App() {
           `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&page=${page}`
         )
         const data = await res.json()
-        setMovies(data.results)
+        setMovies(movieDataSanitizer(data.results))
+        console.log(movieDataSanitizer(data.results))
         setTotalPages(data.total_pages)
       } catch (e) {
         console.log(e)

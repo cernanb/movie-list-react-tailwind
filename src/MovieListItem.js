@@ -1,5 +1,5 @@
 import React from 'react'
-import MovieList from './MovieList'
+import Moment from 'react-moment'
 
 const MovieListItem = ({ movie }) => {
   return (
@@ -9,7 +9,9 @@ const MovieListItem = ({ movie }) => {
       </td>
       <td class="border px-4 py-2">{movie.overview}</td>
       <td class="border px-4 py-2">{movie.popularity}</td>
-      <td class="border px-4 py-2">{movie.release_date}</td>
+      <td class="border px-4 py-2">
+        <Moment format="MM/DD/YYYY">{movie.release_date}</Moment>
+      </td>
     </tr>
   )
 }

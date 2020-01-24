@@ -7,7 +7,7 @@ const Pagination = ({ pages, setPage, page, totalPages }) => {
         <li>
           <button
             disabled={page === 1}
-            class="block hover:text-white hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer "
+            className="block hover:text-white hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer "
             onClick={() => setPage(page - 1)}
           >
             Previous
@@ -15,7 +15,7 @@ const Pagination = ({ pages, setPage, page, totalPages }) => {
         </li>
 
         {pages.map(pageNum => (
-          <li>
+          <li key={pageNum}>
             <span
               className={`block ${
                 page === pageNum ? 'bg-blue-500 text-white' : ''

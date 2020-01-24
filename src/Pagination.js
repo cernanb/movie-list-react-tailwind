@@ -1,42 +1,43 @@
 import React from 'react'
 
-const Pagination = ({ pages, setPage, page }) => {
+const Pagination = ({ pages, setPage, page, totalPages }) => {
   return (
-    <ul class="flex list-reset border border-grey-light rounded w-auto font-sans">
-      {page !== 1 && (
+    <div className="inline-block">
+      <ul className="flex flex-wrap list-reset border border-grey-light rounded font-sans">
         <li>
-          <span
-            class="block hover:text-white hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer"
+          <button
+            disabled={page === 1}
+            class="block hover:text-white hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer "
             onClick={() => setPage(page - 1)}
           >
             Previous
-          </span>
+          </button>
         </li>
-      )}
 
-      {pages.map(pageNum => (
+        {pages.map(pageNum => (
+          <li>
+            <span
+              className={`block ${
+                page === pageNum ? 'bg-blue-500 text-white' : ''
+              } hover:text-white hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer`}
+              onClick={() => setPage(pageNum)}
+            >
+              {pageNum}
+            </span>
+          </li>
+        ))}
+
         <li>
-          <span
-            className={`block ${
-              page === pageNum + 1 ? 'bg-blue-500 text-white' : ''
-            } hover:text-white hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer`}
-            onClick={() => setPage(pageNum + 1)}
-          >
-            {pageNum + 1}
-          </span>
-        </li>
-      ))}
-      {page !== pages.length && (
-        <li>
-          <span
-            class="block hover:text-white hover:bg-blue-500 text-blue px-3 py-2 cursor-pointer"
+          <button
+            disabled={page === totalPages}
+            className=" hover:text-white hover:bg-blue-500 text-blue px-3 py-2 cursor-pointer"
             onClick={() => setPage(page + 1)}
           >
             Next
-          </span>
+          </button>
         </li>
-      )}
-    </ul>
+      </ul>
+    </div>
   )
 }
 

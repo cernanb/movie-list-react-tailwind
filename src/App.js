@@ -34,16 +34,17 @@ function App() {
   const pagesToRender = Array.from(Array(totalPages).keys())
     .slice(0, 10)
     .map(x => x + pageStart + 1)
+    .filter(y => y <= totalPages)
   return (
     <div className="container mx-auto px-6">
-      <div class="w-48 my-8 mx-auto pt-6  text-center text-2xl text-blue-700">{listType.toUpperCase()} MOVIES</div>
-      <div class="w-48 mx-auto pt-6  text-center text-blue-500">{totalResults} Results</div>
+      <div className="w-48 my-8 mx-auto pt-6  text-center text-2xl text-blue-700">{listType.toUpperCase()} MOVIES</div>
+      <div className="w-48 mx-auto pt-6  text-center text-blue-500">{totalResults} Results</div>
       <div className="my-8">
         <div className="inline-block">
           <ul className="flex list-reset border border-grey-light rounded font-sans">
             <li>
               <button
-                class={`block hover:text-white ${listType === 'popular' &&
+                className={`block hover:text-white ${listType === 'popular' &&
                   'bg-blue-500 text-white'} hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer`}
                 onClick={() => {
                   setListType('popular')
@@ -55,7 +56,7 @@ function App() {
             </li>
             <li>
               <button
-                class={`block hover:text-white ${listType === 'upcoming' &&
+                className={`block hover:text-white ${listType === 'upcoming' &&
                   'bg-blue-500 text-white'} hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer`}
                 onClick={() => {
                   setListType('upcoming')

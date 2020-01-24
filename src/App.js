@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { movieDataSanitizer } from './utils'
 import Pagination from './Pagination'
+import ListTypeNavigation from './ListTypeNavigation'
 import MovieList from './MovieList'
 
 const listTypeMapping = {
@@ -34,36 +35,8 @@ function App() {
     <div className="container mx-auto px-6">
       <div className="w-48 my-8 mx-auto pt-6  text-center text-2xl text-blue-700">{listType.toUpperCase()} MOVIES</div>
       <div className="w-48 mx-auto pt-6  text-center text-blue-500">{totalResults} Results</div>
-      <div className="my-8">
-        <div className="inline-block">
-          <ul className="flex list-reset border border-grey-light rounded font-sans">
-            <li>
-              <button
-                className={`block hover:text-white ${listType === 'popular' &&
-                  'bg-blue-500 text-white'} hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer`}
-                onClick={() => {
-                  setListType('popular')
-                  setPage(1)
-                }}
-              >
-                Popular
-              </button>
-            </li>
-            <li>
-              <button
-                className={`block hover:text-white ${listType === 'upcoming' &&
-                  'bg-blue-500 text-white'} hover:bg-blue-500 text-blue border-r border-grey-light px-3 py-2 cursor-pointer`}
-                onClick={() => {
-                  setListType('upcoming')
-                  setPage(1)
-                }}
-              >
-                Upcoming
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+      <ListTypeNavigation listType={listType} setListType={setListType} setPage={setPage} />
       <Pagination page={page} totalPages={totalPages} setPage={setPage} />
       <MovieList movies={movies} />
     </div>

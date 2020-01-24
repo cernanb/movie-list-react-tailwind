@@ -30,11 +30,6 @@ function App() {
     }
     fetchData()
   }, [page, listType])
-  const pageStart = page % 10 === 0 ? Math.floor((page - 1) / 10) * 10 : Math.floor(page / 10) * 10
-  const pagesToRender = Array.from(Array(totalPages).keys())
-    .slice(0, 10)
-    .map(x => x + pageStart + 1)
-    .filter(y => y <= totalPages)
   return (
     <div className="container mx-auto px-6">
       <div className="w-48 my-8 mx-auto pt-6  text-center text-2xl text-blue-700">{listType.toUpperCase()} MOVIES</div>
@@ -69,7 +64,7 @@ function App() {
           </ul>
         </div>
       </div>
-      <Pagination page={page} totalPages={totalPages} setPage={setPage} pages={pagesToRender} />
+      <Pagination page={page} totalPages={totalPages} setPage={setPage} />
       <MovieList movies={movies} />
     </div>
   )

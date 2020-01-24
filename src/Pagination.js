@@ -1,6 +1,11 @@
 import React from 'react'
 
 const Pagination = ({ pages, setPage, page, totalPages }) => {
+  const pageStart = page % 10 === 0 ? Math.floor((page - 1) / 10) * 10 : Math.floor(page / 10) * 10
+  const pageButtonsToRender = Array.from(Array(totalPages).keys())
+    .slice(0, 10)
+    .map(x => x + pageStart + 1)
+    .filter(y => y <= totalPages)
   return (
     <div className="inline-block">
       <ul className="flex flex-wrap list-reset border border-grey-light rounded font-sans">
@@ -14,7 +19,7 @@ const Pagination = ({ pages, setPage, page, totalPages }) => {
           </button>
         </li>
 
-        {pages.map(pageNum => (
+        {pageButtonsToRender.map(pageNum => (
           <li key={pageNum}>
             <span
               className={`block ${
